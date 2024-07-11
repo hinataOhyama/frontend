@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    container_name: frontend
+    tty: true
+    environment:
+      - WATCHPACK_POLLING=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src
+      - node_modules:/usr/src/node_modules
+    command: sh -c "npm run dev"
+
+volumes:
+  node_modules:
